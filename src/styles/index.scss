@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+
+$bodyFont: "Outfit", sans-serif;
+$darkBlue: #3d5a80;
+$skyBlue: #98c1d9;
+$lightBlue: #e0fbfc;
+$orange: #ee6c4d;
+$black: #293241;
+$primaryBackgroundColor: #15202b;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $bodyFont;
+}
+
+.header {
+  width: 100%;
+  padding: 1em 0;
+  background-color: #003153;
+  color: white;
+  .logoText {
+    margin-left: 40px;
+    font-size: x-large;
+    cursor: pointer;
+    width: fit-content;
+  }
+}
+
+.homepage {
+  background: $primaryBackgroundColor;
+  // background: -webkit-linear-gradient(top left, #a356ea, #e0c6ff);
+  // background: -moz-linear-gradient(top left, #a356ea, #e0c6ff);
+  // background: linear-gradient(to bottom right, #a356ea, #e0c6ff);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-text {
+  font-size: 40px;
+  color: white;
+  padding-top: 100px;
+}
+
+.cards-container {
+  width: 60%;
+  // background-color: yellow;
+  margin-top: 30px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 25%;
+  padding: 15px;
+  background-color: $lightBlue;
+  border-radius: 15px;
+
+  p {
+    padding: 5px 0;
+    font-size: medium;
+  }
+
+  .card-header {
+    padding: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+  }
+
+  .card-cta-container {
+    padding: 15px 0 5px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    // .card-cta {
+    //   width: 50%;
+    //   padding: 10px 5px;
+    //   border-radius: 15px;
+    //   background-color: #3d5a80;
+    //   color: white;
+    //   text-align: center;
+    //   cursor: pointer;
+    //   transition: 0.5s;
+    // }
+
+    .card-cta {
+      border-radius: 15px;
+      background-color: #3d5a80;
+      border: none;
+      color: #fff;
+      text-align: center;
+      // font-size: 32px;
+      padding: 10px 5px;
+      width: 50%;
+      transition: all 0.2s;
+      cursor: pointer;
+      // margin: 36px;
+      // box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-cta {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    .card-cta:after {
+      content: "»";
+      position: absolute;
+      opacity: 0;
+      font-size: 25px;
+      bottom: 8px;
+      // top: 14px;
+      // right: -20px;
+      // transition: 0.5s;
+    }
+
+    .card-cta:hover {
+      padding-right: 15px;
+      padding-left: 8px;
+    }
+
+    .card-cta:hover:after {
+      opacity: 1;
+      right: 40px;
+    }
+  }
+}

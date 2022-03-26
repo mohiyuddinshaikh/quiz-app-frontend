@@ -1,0 +1,210 @@
+$twitterBlue: #1d9bf0;
+$twitterBlueHover: #1a8cd8;
+// $primaryBackgroundColor: #303030;
+$primaryBackgroundColor: #15202b;
+// $sidebarSecondaryBackground: #404040;
+$sidebarBackgroundColor: #1e2732;
+
+.quiz-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-color: $primaryBackgroundColor;
+
+  .questions__loader {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .trivia__text {
+      padding: 20px 0;
+      font-size: larger;
+      text-align: center;
+    }
+
+    .text__label {
+      padding-bottom: 5px;
+    }
+  }
+
+  .sidebar-button {
+    margin-left: 200px;
+    width: fit-content;
+  }
+
+  .sidebar__quiz {
+    padding: 40px;
+    background-color: $sidebarBackgroundColor;
+    position: absolute;
+    right: -250px;
+    height: calc(100% - 7em);
+    width: 300px;
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .sidebar__quiz.open {
+    right: 0;
+  }
+
+  .quiz-canvas {
+    color: white;
+    width: 60%;
+    // padding: 40px;
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+
+    .quiz__canvas-left {
+      padding: 40px;
+    }
+
+    .question-current-label {
+      font-size: xx-large;
+    }
+
+    .question {
+      padding-left: 10px;
+      font-size: larger;
+    }
+
+    .option {
+      width: 40%;
+      border: 2px solid gray;
+      border-radius: 10px;
+      padding: 15px 15px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      border: 2px solid white !important;
+    }
+
+    .question-indicator {
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .question-indicator:hover {
+      border: 2px solid white;
+      margin: 8px;
+    }
+
+    .question__indicator-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .quiz__navigation-buttons {
+    background-color: $twitterBlue;
+    width: fit-content;
+    padding: 12px 30px;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .quiz__navigation-buttons:hover {
+    background-color: $twitterBlueHover;
+  }
+
+  .quiz__nav-btn-container {
+    margin-top: 40px;
+    padding: 20px;
+    width: auto;
+    display: flex;
+    justify-content: start;
+  }
+
+  .quiz__exit-btn {
+    border: 2px solid red;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .quiz__exit-btn:hover {
+    background-color: red;
+    transition: 100ms linear;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .quiz__submit-btn {
+    background-color: $twitterBlue;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .quiz__submit-btn:hover {
+    background-color: $twitterBlueHover;
+  }
+}
+
+.quit__modal-container {
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+
+  .quit__modal-body {
+    padding: 15px 0;
+    font-size: large;
+  }
+
+  .quit__modal-actions {
+    display: flex;
+    justify-content: end;
+    padding: 10px 0;
+  }
+
+  .quit__modal-action-btn {
+    padding: 8px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    font-size: large;
+    color: white;
+  }
+
+  .quit__modal-action-btn-yes {
+    background-color: $twitterBlue;
+  }
+
+  .quit__modal-action-btn-yes:hover {
+    background-color: $twitterBlueHover;
+  }
+
+  .quit__modal-action-btn-no {
+    background-color: red;
+  }
+}
