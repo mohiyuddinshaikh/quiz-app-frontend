@@ -16,6 +16,7 @@ export default function Quiz() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [submitLoader, setSubmitLoader] = useState(false);
 
   const currentQuiz = useSelector((state) => state.quizReducer.currentQuiz);
   const userDetails = useSelector((state) => state.quizReducer.users);
@@ -250,8 +251,11 @@ export default function Quiz() {
             <div
               className="quit__modal-action-btn quit__modal-action-btn-yes"
               onClick={handleSubmit}
+              style={{
+                pointerEvents: submitLoader ? "none" : "all",
+              }}
             >
-              Yes
+              {submitLoader ? <Loader /> : "Yes"}
             </div>
           </div>
         </div>
@@ -268,6 +272,7 @@ export default function Quiz() {
     );
 
   async function handleSubmit() {
+    setSubmitLoader(true);
     let responseArray = keepRequiredKeysOnly(questions, ["_id", "answer"]);
     let payload = {
       quizId: currentQuiz.quizId,
@@ -275,6 +280,7 @@ export default function Quiz() {
       name: (userDetails && userDetails.name) || "Genius",
     };
     const response = await submitUserRecord(payload);
+    setSubmitLoader(false);
     if (response && response.data) {
       const storePayload = {
         secured: response.data.secured,
