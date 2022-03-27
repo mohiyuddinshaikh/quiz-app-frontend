@@ -9,8 +9,6 @@ import BackgroundParticle from "../components/BackgroundParticle";
 export default function Homepage() {
   const [allQuizzes, setAllQuizzes] = useState([]);
 
-  console.log("allQuizzes", allQuizzes);
-
   useEffect(() => {
     fetchAllQuizzes();
   }, []);

@@ -18,7 +18,7 @@ export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
 
   const currentQuiz = useSelector((state) => state.quizReducer.currentQuiz);
-  const score = useSelector((state) => state.quizReducer.score);
+  const userDetails = useSelector((state) => state.quizReducer.users);
 
   const brightGreen = "#1ed760";
   const primaryBackgroundColor = "#15202b";
@@ -94,7 +94,7 @@ export default function Quiz() {
   const NavigationController = () => {
     return (
       <div className="quiz__nav-btn-container">
-        <SidebarToggleButton />
+        {/* <SidebarToggleButton /> */}
         <div className="quiz__navigation-buttons" onClick={handleBack}>
           Back
         </div>
@@ -272,7 +272,7 @@ export default function Quiz() {
     let payload = {
       quizId: currentQuiz.quizId,
       response: responseArray,
-      name: "Moin",
+      name: (userDetails && userDetails.name) || "Genius",
     };
     const response = await submitUserRecord(payload);
     if (response && response.data) {
