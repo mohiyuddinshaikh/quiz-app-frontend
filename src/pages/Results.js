@@ -95,6 +95,10 @@ export default function Results() {
     );
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <div
       className="result__primary-container"
@@ -124,8 +128,13 @@ export default function Results() {
           <LoadingLeaderboard />
         )}
         {leaderboard.length ? (
-          <div className="result__view-all-btn" onClick={openSidebar}>
-            View All
+          <div className="btn__container">
+            <div className="result__home-btn" onClick={openSidebar}>
+              View All
+            </div>
+            <div className="result__view-all-btn" onClick={goHome}>
+              Home
+            </div>
           </div>
         ) : (
           ""

@@ -1,6 +1,7 @@
 $primaryBackgroundColor: #15202b;
 $twitterBlue: #1d9bf0;
 $sidebarBackgroundColor: #1e2732;
+$twitterBlueHover: #1a8cd8;
 
 .result__primary-container {
   width: 100%;
@@ -153,16 +154,30 @@ $sidebarBackgroundColor: #1e2732;
 
 .result__view-all-btn {
   border: 2px solid $twitterBlue;
-  width: fit-content;
+  width: "30%";
+  padding: 12px 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.result__view-all-btn:hover {
+  background-color: $twitterBlue;
+  transition: 100ms linear;
+}
+
+.result__home-btn {
+  background-color: $twitterBlue;
+  width: "30%";
   padding: 12px 50px;
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
 }
 
-.result__view-all-btn:hover {
-  background-color: $twitterBlue;
-  transition: 100ms linear;
+.result__home-btn:hover {
+  background-color: $twitterBlueHover;
 }
 
 .backdrop {
@@ -173,4 +188,8 @@ $sidebarBackgroundColor: #1e2732;
   bottom: 0;
   background: white;
   opacity: 0.5;
+}
+
+.btn__container {
+  width: 30%;
 }
