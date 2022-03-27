@@ -3,6 +3,8 @@ import { getAllQuizzes } from "../api/quiz";
 import Header from "../components/Header";
 import QuizCard from "../components/QuizCard";
 import "../styles/index.scss";
+import { Typewriter } from "react-simple-typewriter";
+import BackgroundParticle from "../components/BackgroundParticle";
 
 export default function Homepage() {
   const [allQuizzes, setAllQuizzes] = useState([]);
@@ -23,7 +25,19 @@ export default function Homepage() {
   return (
     <div className="homepage">
       <Header />
-      <div className="title-text">Let's see what you got!</div>
+      <BackgroundParticle />
+      <div className="title-text">Trivin</div>
+      <div className="subtitle__text">
+        <Typewriter
+          words={["Can you crack'em all ?", "Take a challenge !"]}
+          loop={0}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+      </div>
       <div className="cards-container">
         {allQuizzes.map((item) => {
           return (

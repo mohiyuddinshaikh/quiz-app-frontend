@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
 import { Provider } from "react-redux";
 import store from "./store";
+import Details from "./pages/Details";
 
 const Routing = () => {
   return (
@@ -17,6 +18,7 @@ const Routing = () => {
         <Route exact path="/" element={<Homepage />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
     </Router>
   );

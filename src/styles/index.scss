@@ -3,10 +3,12 @@
 $bodyFont: "Outfit", sans-serif;
 $darkBlue: #3d5a80;
 $skyBlue: #98c1d9;
-$lightBlue: #e0fbfc;
+$cardBackground: #2a333c;
 $orange: #ee6c4d;
 $black: #293241;
 $primaryBackgroundColor: #15202b;
+$twitterBlue: #1d9bf0;
+$twitterBlueHover: #1a8cd8;
 
 * {
   margin: 0;
@@ -19,6 +21,7 @@ $primaryBackgroundColor: #15202b;
   padding: 1em 0;
   background-color: #003153;
   color: white;
+  z-index: 999;
   .logoText {
     margin-left: 40px;
     font-size: x-large;
@@ -29,24 +32,29 @@ $primaryBackgroundColor: #15202b;
 
 .homepage {
   background: $primaryBackgroundColor;
-  // background: -webkit-linear-gradient(top left, #a356ea, #e0c6ff);
-  // background: -moz-linear-gradient(top left, #a356ea, #e0c6ff);
-  // background: linear-gradient(to bottom right, #a356ea, #e0c6ff);
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  .subtitle__text {
+    color: white;
+    font-size: 25px;
+    padding: 15px 0 0 0;
+    z-index: 999;
+  }
 }
 
 .title-text {
-  font-size: 40px;
+  font-size: 60px;
   color: white;
   padding-top: 100px;
+  z-index: 999;
 }
 
 .cards-container {
   width: 60%;
-  // background-color: yellow;
   margin-top: 30px;
   padding: 30px;
   display: flex;
@@ -56,13 +64,25 @@ $primaryBackgroundColor: #15202b;
 
 .card {
   width: 25%;
-  padding: 15px;
-  background-color: $lightBlue;
+  min-height: 200px;
+  padding: 15px 25px;
+  background-color: $cardBackground;
   border-radius: 15px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   p {
-    padding: 5px 0;
+    padding: 7px 0;
     font-size: medium;
+  }
+
+  .card__description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .card-header {
@@ -70,67 +90,30 @@ $primaryBackgroundColor: #15202b;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-size: large;
+    font-size: larger;
+  }
+
+  .card__difficulty {
+    font-size: medium;
   }
 
   .card-cta-container {
+    position: absolute;
+    bottom: 10px;
     padding: 15px 0 5px 0;
-    width: 100%;
     display: flex;
     justify-content: center;
 
-    // .card-cta {
-    //   width: 50%;
-    //   padding: 10px 5px;
-    //   border-radius: 15px;
-    //   background-color: #3d5a80;
-    //   color: white;
-    //   text-align: center;
-    //   cursor: pointer;
-    //   transition: 0.5s;
-    // }
-
-    .card-cta {
-      border-radius: 15px;
-      background-color: #3d5a80;
-      border: none;
-      color: #fff;
-      text-align: center;
-      // font-size: 32px;
-      padding: 10px 5px;
-      width: 50%;
-      transition: all 0.2s;
+    .card__cta {
+      border: 2px solid $twitterBlue;
+      width: fit-content;
+      padding: 10px 50px;
+      border-radius: 10px;
       cursor: pointer;
-      // margin: 36px;
-      // box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
     }
 
-    .card-cta {
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      transition: 0.2s;
-    }
-
-    .card-cta:after {
-      content: "»";
-      position: absolute;
-      opacity: 0;
-      font-size: 25px;
-      bottom: 8px;
-      // top: 14px;
-      // right: -20px;
-      // transition: 0.5s;
-    }
-
-    .card-cta:hover {
-      padding-right: 15px;
-      padding-left: 8px;
-    }
-
-    .card-cta:hover:after {
-      opacity: 1;
-      right: 40px;
+    .card__cta:hover {
+      background-color: $twitterBlue;
     }
   }
 }

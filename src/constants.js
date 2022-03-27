@@ -5,7 +5,7 @@ export const FACTS_LIST = [
   "The three wealthiest families in the world have more assets than the combined wealth of the forty-eight poorest nations.",
   "There are more possible iterations of a game of chess than there are atoms in the known universe.",
   "A hummingbird weighs less than a penny.",
-  "Khalid ibn Walid (ra) fought over 115 battles and remained undefeated.",
+  "Khalid bin Walid (ra) fought over 115 battles and remained undefeated.",
   "If you try to suppress a sneeze, you can rupture a blood vessel in your head or neck and die.",
   "The average person walks the equivalent of three times around the world in a lifetime.",
   "The tongue is the strongest muscle in the human body.",

@@ -2,6 +2,9 @@ const initialState = {
   currentQuiz: null,
   answers: null,
   score: null,
+  users: {
+    name: null,
+  },
 };
 
 const quizReducer = (state = initialState, action) => {
@@ -25,6 +28,14 @@ const quizReducer = (state = initialState, action) => {
     state = {
       ...state,
       score: { ...action.payload },
+    };
+    return state;
+  }
+
+  if (action.type === "UPDATE_USER_DETAIL") {
+    state = {
+      ...state,
+      users: { name: action.payload.name },
     };
     return state;
   }

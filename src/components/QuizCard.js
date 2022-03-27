@@ -10,7 +10,7 @@ export default function QuizCard(props) {
   const dispatch = useDispatch();
 
   const takeQuiz = () => {
-    navigate("/quiz");
+    navigate("/details");
   };
 
   const handleStart = () => {
@@ -21,14 +21,16 @@ export default function QuizCard(props) {
     <div className="card">
       <div className="card-header">
         <div>{name}</div>
-        <div>
+        <div className="card__difficulty">
           {difficulty === 0 ? "Easy" : difficulty === 1 ? "Medium" : "Hard"}
         </div>
       </div>
-      <p>Subject: {subject}</p>
-      <p>No. of Questions: {numberOfQuestions}</p>
+      <div className="card__description">
+        <p>{subject}</p>
+        <p>Questions: {numberOfQuestions}</p>
+      </div>
       <div className="card-cta-container" onClick={takeQuiz}>
-        <div className="card-cta" onClick={handleStart}>
+        <div className="card__cta" onClick={handleStart}>
           Start
         </div>
       </div>
