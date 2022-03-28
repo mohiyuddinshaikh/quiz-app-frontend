@@ -117,3 +117,115 @@ $twitterBlueHover: #1a8cd8;
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: $bodyFont;
+  }
+
+  .header {
+    width: 100%;
+    padding: 1em 0;
+    background-color: #003153;
+    color: white;
+    z-index: 999;
+    .logoText {
+      margin-left: 40px;
+      font-size: x-large;
+      cursor: pointer;
+      width: fit-content;
+    }
+  }
+
+  .homepage {
+    background: $primaryBackgroundColor;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .subtitle__text {
+      color: white;
+      font-size: 25px;
+      padding: 15px 0 0 0;
+      z-index: 999;
+    }
+  }
+
+  .title-text {
+    font-size: 60px;
+    color: white;
+    padding-top: 30px;
+    z-index: 999;
+  }
+
+  .cards-container {
+    width: 90%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    z-index: 999;
+    color: white;
+  }
+
+  .card {
+    width: 80%;
+    min-height: 200px;
+    padding: 15px 25px;
+    background-color: $cardBackground;
+    border-radius: 15px;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+
+    p {
+      padding: 7px 0;
+      font-size: medium;
+    }
+
+    .card__description {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .card-header {
+      padding: 15px 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: larger;
+    }
+
+    .card__difficulty {
+      font-size: medium;
+    }
+
+    .card-cta-container {
+      position: absolute;
+      bottom: 10px;
+      padding: 15px 0 5px 0;
+      display: flex;
+      justify-content: center;
+
+      .card__cta {
+        border: 2px solid $twitterBlue;
+        width: fit-content;
+        padding: 10px 50px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .card__cta:hover {
+        background-color: $twitterBlue;
+      }
+    }
+  }
+}

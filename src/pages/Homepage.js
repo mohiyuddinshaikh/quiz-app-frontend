@@ -14,9 +14,13 @@ export default function Homepage() {
   }, []);
 
   const fetchAllQuizzes = async () => {
-    const response = await getAllQuizzes();
-    if (response) {
-      setAllQuizzes(response.quizzes);
+    try {
+      const response = await getAllQuizzes();
+      if (response) {
+        setAllQuizzes(response.quizzes);
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
@@ -37,17 +41,19 @@ export default function Homepage() {
         />
       </div>
       <div className="cards-container">
-        {allQuizzes.map((item) => {
-          return (
-            <QuizCard
-              name={item.name}
-              difficulty={item.difficulty}
-              subject={item.subject}
-              numberOfQuestions={item.numberOfQuestions}
-              quizId={item._id}
-            />
-          );
-        })}
+        {allQuizzes &&
+          allQuizzes.map((item, index) => {
+            return (
+              <QuizCard
+                key={index}
+                name={item.name}
+                difficulty={item.difficulty}
+                subject={item.subject}
+                numberOfQuestions={item.numberOfQuestions}
+                quizId={item._id}
+              />
+            );
+          })}
       </div>
     </div>
   );

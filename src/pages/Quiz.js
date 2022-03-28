@@ -8,12 +8,21 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as QuizActions from "../store/actions/quiz.action";
 import { Loader } from "../components/Loader";
+import {
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
+  FaLocationArrow,
+  FaPowerOff,
+} from "react-icons/fa";
+import useIsMobile from "../hooks/isMobile";
 
 export default function Quiz() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  let isMobile = useIsMobile();
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(isMobile ? false : true);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [submitLoader, setSubmitLoader] = useState(false);
@@ -24,6 +33,7 @@ export default function Quiz() {
   const brightGreen = "#1ed760";
   const primaryBackgroundColor = "#15202b";
   const sidebarBackgroundColor = "#1e2732";
+  const twitterBlue = "#1d9bf0";
 
   let sidebarClass = isSidebarOpen ? "sidebar__quiz open" : "sidebar__quiz";
 
@@ -47,13 +57,25 @@ export default function Quiz() {
     }
   };
 
+  const sidebarTogglerIconStyles = {
+    fontSize: "20px",
+    backgroundColor: "white",
+    borderRadius: "50%",
+    color: twitterBlue,
+    padding: "2px",
+  };
+
   const SidebarToggleButton = () => {
     return (
       <div
-        className="quiz__navigation-buttons"
+        className="sidebar__icon-container"
         onClick={() => setIsSidebarOpen((oldProp) => !oldProp)}
       >
-        {isSidebarOpen ? "Close" : "Open"} sidebar
+        {isSidebarOpen ? (
+          <FaChevronCircleRight style={sidebarTogglerIconStyles} />
+        ) : (
+          <FaChevronCircleLeft style={sidebarTogglerIconStyles} />
+        )}
       </div>
     );
   };
@@ -93,15 +115,26 @@ export default function Quiz() {
   };
 
   const NavigationController = () => {
-    return (
+    return !isMobile ? (
       <div className="quiz__nav-btn-container">
-        {/* <SidebarToggleButton /> */}
         <div className="quiz__navigation-buttons" onClick={handleBack}>
           Back
         </div>
         <div className="quiz__navigation-buttons" onClick={handleNext}>
           Next
         </div>
+      </div>
+    ) : (
+      <div className="quiz__nav-btn-container">
+        <div className="back__next-holder">
+          <div className="quiz__navigation-buttons" onClick={handleBack}>
+            Back
+          </div>
+          <div className="quiz__navigation-buttons" onClick={handleNext}>
+            Next
+          </div>
+        </div>
+        <SidebarToggleButton />
       </div>
     );
   };
@@ -169,6 +202,7 @@ export default function Quiz() {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      width: isMobile ? "80%" : "",
     },
     overlay: {
       backgroundColor: sidebarBackgroundColor,
@@ -296,9 +330,18 @@ export default function Quiz() {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
+  const sidebarActionIconStyles = (type) => {
+    return {
+      fontSize: "25px",
+      borderRadius: "50%",
+      color: type === 0 ? twitterBlue : type === 1 ? "lightgreen" : "red",
+    };
+  };
+
   return (
     <div className="quiz-page-container">
       <Header />
+
       {questions.length ? (
         <div className="quiz-canvas">
           <div className="quiz__canvas-left">
@@ -311,20 +354,42 @@ export default function Quiz() {
               })}
             <NavigationController />
           </div>
-          <div className={sidebarClass}>
+          <div
+            className={sidebarClass}
+            style={{
+              backgroundColor: isMobile && !isSidebarOpen ? "transparent" : "",
+            }}
+          >
             <div className="question__indicator-container">
               {questions.map((question, index) => {
                 return <QuestionsIndicator index={index} question={question} />;
               })}
             </div>
-            <div>
-              <div className="quiz__submit-btn" onClick={openSubmitQuizModal}>
-                Submit
+            {!isMobile ? (
+              <div className="quiz__submit-container">
+                <div className="quiz__submit-btn" onClick={openSubmitQuizModal}>
+                  Submit
+                </div>
+                <div className="quiz__exit-btn" onClick={openQuitQuizModal}>
+                  Quit
+                </div>
               </div>
-              <div className="quiz__exit-btn" onClick={openQuitQuizModal}>
-                Quit
+            ) : (
+              <div className="mobile__quiz__submit-container">
+                <FaChevronCircleRight
+                  style={sidebarActionIconStyles(0)}
+                  onClick={() => setIsSidebarOpen((oldProp) => !oldProp)}
+                />
+                <FaLocationArrow
+                  style={sidebarActionIconStyles(1)}
+                  onClick={openSubmitQuizModal}
+                />
+                <FaPowerOff
+                  style={sidebarActionIconStyles(2)}
+                  onClick={openQuitQuizModal}
+                />
               </div>
-            </div>
+            )}
           </div>
         </div>
       ) : (
