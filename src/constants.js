@@ -12,3 +12,5 @@ export const FACTS_LIST = [
   "Mehmed II was only 21 years old when he conquered Constantinople ( present day Istanbul ) in 1943.",
   "Chess was invented in India around the 8th century. Then it was known as chatrang.",
 ];
+
+export const sidebarBackgroundColor = "#1e2732";

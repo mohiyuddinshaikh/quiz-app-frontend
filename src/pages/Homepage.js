@@ -5,8 +5,14 @@ import QuizCard from "../components/QuizCard";
 import "../styles/index.scss";
 import { Typewriter } from "react-simple-typewriter";
 import BackgroundParticle from "../components/BackgroundParticle";
+import Modal from "react-modal";
+import useIsMobile from "../hooks/isMobile";
+import { sidebarBackgroundColor } from "../constants";
+import { FaTools } from "react-icons/fa";
 
 export default function Homepage() {
+  let isMobile = useIsMobile();
+
   const [allQuizzes, setAllQuizzes] = useState([]);
 
   useEffect(() => {
@@ -22,6 +28,67 @@ export default function Homepage() {
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+  const [createQuizModal, setCreateQuizModal] = useState(false);
+
+  function openCreateQuizModal() {
+    setCreateQuizModal(true);
+  }
+
+  function closeCreateQuizModal() {
+    setCreateQuizModal(false);
+  }
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      width: isMobile ? "80%" : "",
+    },
+    overlay: {
+      backgroundColor: sidebarBackgroundColor,
+      opacity: 0.9,
+    },
+  };
+
+  const CreateQuizModal = () => {
+    const toolsStyle = {};
+
+    return (
+      <Modal
+        isOpen={createQuizModal}
+        onRequestClose={closeCreateQuizModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className="create-quiz-modal__container">
+          <div className="headline">
+            This feature is currently under development{" "}
+            <FaTools
+              style={{
+                color: "#1d9bf0",
+                marginLeft: "10px",
+                fontSize: "20px",
+              }}
+            />
+          </div>
+          <div className="feature__list">
+            <li>Create your own quiz</li>
+            <li>Share it with your friends</li>
+            <li>
+              Only people you share this link with will be able to answer that
+              quiz
+            </li>
+          </div>
+          <div>close</div>
+        </div>
+      </Modal>
+    );
   };
 
   return (
@@ -55,6 +122,12 @@ export default function Homepage() {
             );
           })}
       </div>
+      {/* <div className="create-own-course__container">
+        <div className="create-own-course__btn" onClick={openCreateQuizModal}>
+          Create Your Own Quiz
+        </div>
+      </div> */}
+      {/* <CreateQuizModal /> */}
     </div>
   );
 }

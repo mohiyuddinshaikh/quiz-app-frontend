@@ -118,6 +118,44 @@ $twitterBlueHover: #1a8cd8;
   }
 }
 
+.create-own-course__container {
+  z-index: 999;
+
+  .create-own-course__btn {
+    border: 2px solid $twitterBlue;
+    width: "30%";
+    padding: 12px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    z-index: 999;
+    color: white;
+  }
+
+  .create-own-course__btn:hover {
+    background-color: $twitterBlue;
+    transition: 100ms linear;
+  }
+}
+
+.create-quiz-modal__container {
+  .headline {
+    font-size: x-large;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  li {
+    padding: 5px 0;
+  }
+
+  .feature__list {
+    padding: 0 20px 0 20px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   * {
     margin: 0;
@@ -226,6 +264,28 @@ $twitterBlueHover: #1a8cd8;
       .card__cta:hover {
         background-color: $twitterBlue;
       }
+    }
+  }
+
+  .create-own-course__container {
+    z-index: 999;
+    padding-bottom: 20px;
+
+    .create-own-course__btn {
+      border: 2px solid $twitterBlue;
+      width: "30%";
+      padding: 12px 50px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 10px;
+      z-index: 999;
+      color: white;
+    }
+
+    .create-own-course__btn:hover {
+      background-color: $twitterBlue;
+      transition: 100ms linear;
     }
   }
 }

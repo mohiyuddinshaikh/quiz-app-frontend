@@ -71,9 +71,7 @@ export default function Quiz() {
         className="sidebar__icon-container"
         onClick={() => setIsSidebarOpen((oldProp) => !oldProp)}
       >
-        {isSidebarOpen ? (
-          <FaChevronCircleRight style={sidebarTogglerIconStyles} />
-        ) : (
+        {isSidebarOpen ? null : (
           <FaChevronCircleLeft style={sidebarTogglerIconStyles} />
         )}
       </div>

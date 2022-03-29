@@ -6,9 +6,11 @@ import { Loader } from "../components/Loader";
 import "../styles/results.scss";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import useIsMobile from "../hooks/isMobile";
 
 export default function Results() {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const score = useSelector((state) => state.quizReducer.score);
   const quizReducer = useSelector((state) => state.quizReducer);
@@ -111,7 +113,10 @@ export default function Results() {
       <div className="result__container">
         <div className="result__score-header">You Scored</div>
         <div>
-          <span className="result__score-text-main">
+          <span
+            className="result__score-text-main"
+            style={{ color: score && score.secured > 5 ? "lightgreen" : "red" }}
+          >
             {(score && score.secured) || 0}
           </span>
           <span className="result__score-text-total">
@@ -143,6 +148,7 @@ export default function Results() {
       <div
         style={{
           pointerEvents: "all",
+          width: isMobile && viewAll ? "70%" : "30%",
         }}
         className={sidebarClass}
       >
@@ -150,7 +156,10 @@ export default function Results() {
           <div className="header__strip">
             <FaRegTimesCircle
               onClick={closeSidebar}
-              style={{ fontSize: "30px", cursor: "pointer" }}
+              style={{
+                fontSize: isMobile ? "25px" : "30px",
+                cursor: "pointer",
+              }}
             />
           </div>
           <div className="leaderboard__table">
