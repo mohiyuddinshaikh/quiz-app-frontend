@@ -251,7 +251,7 @@ $sidebarBackgroundColor: #1e2732;
       background-color: $sidebarBackgroundColor;
       position: absolute;
       right: -360px;
-      height: calc(100% - 7em);
+      height: calc(100% - 5em);
       width: 300px;
       transition: right 0.3s ease-in-out;
       display: flex;
@@ -322,7 +322,7 @@ $sidebarBackgroundColor: #1e2732;
     .mobile__quiz__submit-container {
       display: flex;
       justify-content: space-around;
-      margin-bottom: 40px;
+      margin-bottom: 70px;
       width: 80%;
       align-self: center;
     }
