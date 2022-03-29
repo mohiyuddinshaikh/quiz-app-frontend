@@ -148,7 +148,8 @@ export default function Results() {
       <div
         style={{
           pointerEvents: "all",
-          width: isMobile && viewAll ? "70%" : "30%",
+          width:
+            isMobile && viewAll ? "70%" : !isMobile && viewAll ? "30%" : "",
         }}
         className={sidebarClass}
       >
