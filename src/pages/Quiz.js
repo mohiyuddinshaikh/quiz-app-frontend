@@ -15,6 +15,7 @@ import {
   FaPowerOff,
 } from "react-icons/fa";
 import useIsMobile from "../hooks/isMobile";
+import he from "he";
 
 export default function Quiz() {
   const navigate = useNavigate();
@@ -149,7 +150,7 @@ export default function Quiz() {
               : "gray",
         }}
       >
-        {option}
+        {he.decode(String(option))}
       </div>
     );
   };
@@ -161,7 +162,9 @@ export default function Quiz() {
         {(questions && questions.length) || 10}){"  "}
         <span className="question">
           {" "}
-          {questions.length && questions[currentQuestion - 1].question}{" "}
+          {he.decode(
+            String(questions.length && questions[currentQuestion - 1].question)
+          )}
         </span>
       </>
     );
