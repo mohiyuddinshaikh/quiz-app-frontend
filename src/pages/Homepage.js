@@ -108,7 +108,7 @@ export default function Homepage() {
         />
       </div>
       <div className="cards-container">
-        {allQuizzes &&
+        {allQuizzes?.length ? (
           allQuizzes.map((item, index) => {
             return (
               <QuizCard
@@ -120,7 +120,13 @@ export default function Homepage() {
                 quizId={item._id}
               />
             );
-          })}
+          })
+        ) : (
+          <div className="waitCopy">
+            Please wait 30 seconds and refresh. The free tier on Render requires
+            extra time for the initial load for the first time.
+          </div>
+        )}
       </div>
       {/* <div className="create-own-course__container">
         <div className="create-own-course__btn" onClick={openCreateQuizModal}>
